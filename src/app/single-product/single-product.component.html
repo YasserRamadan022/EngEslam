@@ -1,0 +1,45 @@
+<div class="card relative" appHighlight [quantity]="product.quantity || 0">
+  <img class="card-img-top" [src]="product.imgURL" alt="Card image cap" />
+  @if(!product.quantity){
+  <div class="overlay"></div>
+  }
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.price }}</p>
+    <p class="card-text">{{ product.categoryName | capitalCase }}</p>
+    <p class="card-text">Added At {{ currentDate | date }}</p>
+
+    @switch (product.quantity) { @case (1) {
+    <p class="text-warning">Only 1 left in stock - order soon.</p>
+    } @case (2) {
+    <p class="text-info">Only 2 left in stock - order soon.</p>
+    }@default {
+    <p>{{ product.quantity }} items available</p>
+    } }
+    <button
+      href="#"
+      class="btn btn-primary"
+      (click)="addtocart(product)"
+      [disabled]="product.quantity == 0"
+    >
+      Add To Cart
+    </button>
+    <button
+      href="#"
+      class="btn btn-primary ms-2"
+      (click)="HandlePro(product.id)"
+      [disabled]="product.quantity == 0"
+    >
+      Details
+    </button>
+    <button href="#" class="btn btn-danger ms-2" (click)="Delete(product.id)">
+      Delete
+    </button>
+
+    @if (product.quantity==0) {
+    <p class="text-danger">Out of stock</p>
+    }@else {
+    <p class="text-success">in stock</p>
+    }
+  </div>
+</div>

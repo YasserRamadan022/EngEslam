@@ -1,0 +1,31 @@
+@if(product){
+<button class="btn btn-secondary mt-4" (click)="Goback()">Go back</button>
+
+<div class="product-details">
+  <div>
+    <img [src]="product.imgURL" />
+  </div>
+  <div class="product-details-col">
+    <p><b>Name</b> {{ product.name }}</p>
+    <p><b>Price</b> {{ product.price | currency }}</p>
+    <p><b>Quantity</b> {{ product.quantity }}</p>
+    <p><b>Description</b> {{ product.description }}</p>
+  </div>
+</div>
+<div class="mt-4 d-flex align-items-center gap-4">
+  <button
+    [disabled]="checkfirstone"
+    class="btn btn-warning"
+    (click)="Getprevproduct(product.id)"
+  >
+    Back
+  </button>
+  <button
+    [disabled]="checklastone"
+    class="btn btn-info"
+    (click)="Getnextproduct(product.id)"
+  >
+    Next
+  </button>
+</div>
+}

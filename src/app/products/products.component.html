@@ -1,0 +1,47 @@
+<img class="Kenan" [class]="ToggleImg ? 'visible' : 'hidden'" [src]="logosrc" />
+<h1 [class]="ToggleImg ? 'hidden' : 'visible'">
+  Thank You For Buying , Mr {{ ClientName }}
+</h1>
+<button class="btn btn-primary" (click)="ImgToggle()">Buy</button>
+
+<div class="dropdown">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Filter Products
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <a
+        class="dropdown-item"
+        style="cursor: pointer"
+        (click)="HandleDropDown(1)"
+        >Category One</a
+      >
+    </li>
+    <li>
+      <a
+        class="dropdown-item"
+        style="cursor: pointer"
+        (click)="HandleDropDown(2)"
+        >Category Two</a
+      >
+    </li>
+    <li>
+      <a
+        class="dropdown-item"
+        style="cursor: pointer"
+        (click)="HandleDropDown(3)"
+        >Category Three</a
+      >
+    </li>
+  </ul>
+</div>
+<div class="p-2 products-container">
+  @for(parentproduct of products;track parentproduct.id){
+  <app-single-product [product]="parentproduct"></app-single-product>
+  }
+</div>

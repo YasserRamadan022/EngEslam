@@ -1,0 +1,98 @@
+<form [formGroup]="addproductform" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Name</label>
+    <input
+      formControlName="name"
+      type="text"
+      class="form-control"
+      placeholder="Username"
+      name="name"
+    />
+  </div>
+  @if(getIsError("name","required")){
+  <span class="text-danger">Name is required</span>
+  }
+  @if(addproductform.controls['name'].dirty&&addproductform.controls['name'].touched
+  && addproductform.controls['name'].errors?.['minlength']){
+  <span class="text-danger">Minumum 3 chars</span>
+  }
+  <div class="form-group">
+    <label>Price</label>
+    <input
+      formControlName="price"
+      type="number"
+      class="form-control"
+      placeholder="Price"
+      name="price"
+    />
+  </div>
+  @if(getIsError("price","required")){
+  <span class="text-danger">Price is required</span>
+  }
+  <div class="form-group">
+    <label>imgURL</label>
+    <input
+      formControlName="imgURL"
+      type="text"
+      class="form-control"
+      placeholder="Image url"
+      name="imgURL"
+    />
+  </div>
+  @if(getIsError("imgURL","required")){
+  <span class="text-danger">ImgUrl is required</span>
+  }
+  <label>Choose Category</label><br />
+  <select
+    formControlName="categoryID"
+    placeholder="categoryID"
+    name="categoryID"
+  >
+    <option value="1">Category One</option>
+    <option value="2">Category two</option>
+    <option value="3">Category Three</option>
+  </select>
+
+  <div class="form-group">
+    <label>description</label>
+    <input
+      formControlName="description"
+      type="text"
+      class="form-control"
+      placeholder="description"
+      name="description"
+    />
+  </div>
+  @if(getIsError("description","required")){
+  <span class="text-danger">Description is required</span>
+  }
+  <div class="form-group">
+    <label>matrial</label>
+    <input
+      formControlName="matrial"
+      type="text"
+      class="form-control"
+      placeholder="matrial"
+      name="matrial"
+    />
+  </div>
+  @if(getIsError("matrial","required")){
+  <span class="text-danger">Matrial is required</span>
+  }
+  <div class="form-group">
+    <label>quantity</label>
+    <input
+      formControlName="quantity"
+      type="number"
+      class="form-control"
+      placeholder="description"
+      name="quantity"
+    />
+  </div>
+  @if(getIsError("quantity","required")){
+  <span class="text-danger">Quantity is required</span>
+  }
+  <button class="btn btn-primary" [disabled]="addproductform.invalid">
+    Add product
+  </button>
+</form>
